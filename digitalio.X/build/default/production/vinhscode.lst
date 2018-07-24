@@ -1,0 +1,77 @@
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-14-2018  15:05:04         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001     processor 18F8722
+                      00002     config OSC=HS, WDT=OFF , LVP = OFF
+                      00003     radix decimal
+                      00004     org 0x00
+                      00005 
+                      00006 ;Define SFRs
+  00000F92            00007 TRISA   equ 0xF92   ;Q3 - LEDs
+  00000F94            00008 TRISC   equ 0xF94   ;
+  00000F97            00009 TRISF   equ 0xF97   ;Control illumination of LEDs & 7 segs
+  00000F99            00010 TRISH   equ 0xF99   ;Q1/2 - 7 segs
+  00000F89            00011 LATA    equ 0xF89   ;Q3 - LEDs
+  00000F8E            00012 LATF    equ 0xF8E   ;Control illumination of LEDs & 7 segs
+  00000F90            00013 LATH    equ 0xF90   ;Q1/2 - 7 segs
+                      00014 
+                      00015     ;Set port A, C, F as outputs
+000000 0E00           00016     MOVLW 0
+000002 6E92           00017     MOVWF TRISA
+000004 6E94           00018     MOVWF TRISC
+000006 6E97           00019     MOVWF TRISF
+                      00020     ;Set port H pin 0 as output
+000008 0EFC           00021     MOVLW B'11111100'
+00000A 6E99           00022     MOVWF TRISH
+                      00023 
+                      00024     ;Turn off Q3, disable LEDs
+00000C 0E00           00025     MOVLW 0
+00000E 6E89           00026     MOVWF LATA
+                      00027     ;Turn off Q1/2, disable 7 segs
+000010 0EFF           00028     MOVLW 255
+000012 6E90           00029     MOVWF LATH
+                      00030 
+                      00031     ;Turn LED 3, 4, 5 on
+Warning[207]: Found label after column 1. (L1)
+000014 0E38           00032  L1 MOVLW B'00111000'
+000016 6E8E           00033     MOVWF LATF
+000018 0E10           00034     MOVLW B'00010000' ;Turn Q3 on
+00001A 6E89           00035     MOVWF LATA
+                      00036 
+                      00037     ;Turn Q3 off
+00001C 0E00           00038     MOVLW 0
+00001E 6E89           00039     MOVWF LATA
+                      00040 
+                      00041     ;Turn on RHS 7 segments E, D, F, G
+000020 0E0F           00042     MOVLW B'00001111'
+000022 6E8E           00043     MOVWF LATF
+000024 0EFC           00044     MOVLW B'11111100' ;Turn Q1 on
+000026 6E90           00045     MOVWF LATH
+000028 0EFF           00046     MOVLW 255 ;Turn Q1 off
+00002A 6E90           00047     MOVWF LATH
+00002C D???           00048     BRA L1 ;Loop continiously
+                      00049     end
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-14-2018  15:05:04         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+L1                                00000014
+LATA                              00000F89
+LATF                              00000F8E
+LATH                              00000F90
+TRISA                             00000F92
+TRISC                             00000F94
+TRISF                             00000F97
+TRISH                             00000F99
+__18F8722                         00000001
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

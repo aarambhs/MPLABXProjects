@@ -1,0 +1,13 @@
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 6 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 7 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 8 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 9 : Executable code and data must be defined in an appropriate section
+Error[150]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 11 : Labels must be defined in a code or data section when making an object file
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 12 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 13 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 14 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 15 : Executable code and data must be defined in an appropriate section
+Error[151]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 16 : Operand contains unresolvable labels or is too complex
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 16 : Executable code and data must be defined in an appropriate section
+Error[152]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 18 : Executable code and data must be defined in an appropriate section
+Error[129]   /Users/JKSINHA/MPLABXProjects/EXAM1.X/newAsmTemplate.asm 21 : Expected (END)

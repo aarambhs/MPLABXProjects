@@ -1,0 +1,41 @@
+MPLINK 5.08, LINKER
+Linker Map File - Created Mon May 14 15:05:17 2018
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00002e
+                   .cinit    romdata   0x00002e    program   0x000002
+                    dbgP0       code   0x01fd30    program   0x0002d0
+.config_300001_BUILD/DEFAULT/DEBUG/VINHSCODE.O    romdata   0x300001    program   0x000001
+.config_300003_BUILD/DEFAULT/DEBUG/VINHSCODE.O    romdata   0x300003    program   0x000001
+.config_300006_BUILD/DEFAULT/DEBUG/VINHSCODE.O    romdata   0x300006    program   0x000001
+                    dbgD0      udata   0x000ef4       data   0x00000c
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00002f      
+                            0x01fd30    0x01ffff      
+                            0x300001    0x300001      
+                            0x300003    0x300003      
+                            0x300006    0x300006      
+            771 out of 132120 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                       L1   0x000014    program     static /Users/Aarambh/Documents/HDD RECOVERY/MPLABXProjects/digitalio.X/vinhscode.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                       L1   0x000014    program     static /Users/Aarambh/Documents/HDD RECOVERY/MPLABXProjects/digitalio.X/vinhscode.asm
+
+

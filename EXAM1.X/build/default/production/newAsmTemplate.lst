@@ -1,0 +1,55 @@
+MPASM 5.77  /USERS/JKSINHA/MPLABXPROJECTS/EX   5-2-2018  2:20:58         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001     radix decimal
+                      00002     
+  00000015            00003 x   equ 21
+  00000017            00004 y   equ 23
+                      00005    
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00006    MOVLW 0x56
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00007    MOVWF x
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00008    MOVLW 27
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00009    MOVWF y
+                      00010    
+Error[150]  : Labels must be defined in a code or data section when making an object file
+000000                00011 loop
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00012    MOVF x, w
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00013    INCF x
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00014    XORWF    y
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00015    DECF y
+Error[151]  : Operand contains unresolvable labels or is too complex
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00016    BC   loop
+                      00017    
+Error[152]  : Executable code and data must be defined in an appropriate section
+000000                00018    NOP
+                      00019 
+                      00020 
+Error[129]  : Expected (END)
+MPASM 5.77  /USERS/JKSINHA/MPLABXPROJECTS/EX   5-2-2018  2:20:58         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+__18F8722                         00000001
+loop                              00000000
+x                                 00000015
+y                                 00000017
+
+Errors   :    13
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

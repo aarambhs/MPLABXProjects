@@ -1,0 +1,108 @@
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-14-2018  12:52:51         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001         processor       18F8722
+                      00002         config OSC=HS, WDT=OFF, LVP=OFF 
+                      00003         radix decimal
+                      00004         
+                      00005         org 0x00
+  0000000E            00006 lcnt1   equ 14 ; assign file reg 14 to loop counter 1 (100us loop) equ 15 ; assign file reg 15 to loop c
+                            ounter 2 (10ms loop) equ 16 ; assign file reg 16 to loop counter 3 (n*10ms loop) equ 5 ; n value
+Error[108]  : Illegal character (1)
+  0000000E            00007 lcnt2   15
+  00000F90            00008 LATH    equ 0xF90 ; SFR definitions equ 0xF99
+Error[108]  : Illegal character (1)
+  00000F90            00009 lcnt3   15
+  00000F8E            00010 LATF    equ 0xF8E
+Error[108]  : Illegal character (5)
+  00000F8E            00011 n       5
+  00000F97            00012 TRISF   equ 0xF97
+  00000F99            00013 TRISH   equ 0xF99
+                      00014         
+000000 0E00           00015         MOVLW 0
+000002 6E97           00016         MOVWF TRISF ; set ALL PORTF pins as O/P's
+                      00017 
+000004                00018 L1      
+000004 0EFE           00019         MOVLW B'11111110' ; send PIN RH0 of PORT H low MOVWF LATH ; via LATH to drive transistor Q1
+000006 6E90           00020         MOVWF LATH
+000008 0E26           00021         MOVLW B'00100110' ; send PINS RF0, RF3, RF4, RF6, RF7 low MOVWF LATF ; via LATF to display numbe
+                            r 5 on U1
+00000A 6E8E           00022         MOVWF LATF
+00000C 0EFE           00023         MOVLW B'11111110' ; set TRISH such that pin RH0 MOVWF TRISH ; of PORTH is an output
+00000E 6E99           00024         MOVWF TRISH 
+000010 EC?? F???      00025         CALL L2
+000014 0EFD           00026         MOVLW B'11111101' ; send PIN RH1 of PORT H low
+000016 6E90           00027         MOVWF LATH
+000018 6E99           00028         MOVWF TRISH
+                      00029         
+00001A 0E4C           00030         MOVLW B'01001100' ; send PIN RH1 of PORT H low
+00001C 6E8E           00031         MOVWF LATF
+                      00032         
+00001E EC?? F???      00033         CALL    L2
+                      00034 
+                      00035 
+                      00036         
+000022 D???           00037         BRA L1 ; loop forever
+000024                00038 L2
+Error[113]  : Symbol not previously defined (n)
+000024 0E00           00039         MOVLW n
+                      00040 ; main program loop
+                      00041 
+                      00042 
+Error[113]  : Symbol not previously defined (lcnt3)
+000026 6E00           00043         MOVWF   lcnt3
+000028                00044 L3
+000028 0E64           00045         MOVLW   100
+Error[113]  : Symbol not previously defined (lcnt2)
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-14-2018  12:52:51         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00002A 6E00           00046         MOVWF   lcnt2
+00002C                00047 L5
+00002C 0000           00048         NOP 
+00002E 0000           00049         NOP 
+000030 0000           00050         NOP 
+000032 0000           00051         NOP
+000034 0000           00052         NOP 
+000036 0000           00053         NOP
+000038 060E           00054         DECF    lcnt1
+00003A E1??           00055         BNZ     L5
+00003C 0000           00056         NOP
+00003E 0000           00057         NOP
+Error[113]  : Symbol not previously defined (LXNT2)
+000040 0600           00058         DECF    LXNT2
+Error[113]  : Symbol not previously defined (L4)
+000042 E1DE           00059         BNZ     L4
+Error[113]  : Symbol not previously defined (lcnt4)
+000044 2E00           00060         DECFSZ  lcnt4
+000046 EF?? F???      00061         GOTO    L3
+00004A 0012           00062         RETURN 
+                      00063         End
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-14-2018  12:52:51         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+L1                                00000004
+L2                                00000024
+L3                                00000028
+L5                                0000002C
+LATF                              00000F8E
+LATH                              00000F90
+TRISF                             00000F97
+TRISH                             00000F99
+__18F8722                         00000001
+lcnt1                             0000000E
+
+Errors   :     9
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

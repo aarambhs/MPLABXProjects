@@ -1,0 +1,113 @@
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-13-2018  19:11:56         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001         processor       18F8722
+                      00002         config OSC=HS, WDT=OFF, LVP=OFF 
+                      00003         radix decimal
+                      00004         
+                      00005         org 0x00;
+  0000000E            00006 lcnt1   equ 14 ; assign file reg 14 to loop counter 1 (100us loop) equ 15 ; assign file reg 15 to loop c
+                            ounter 2 (10ms loop) equ 16 ; assign file reg 16 to loop counter 3 (n*10ms loop) equ 5 ; n value
+  0000000F            00007 lcnt2   equ 15
+  00000F90            00008 LATH    equ 0xF90 ; SFR definitions equ 0xF99
+  00000010            00009 lcnt3   equ 16
+  00000F8E            00010 LATF    equ 0xF8E
+  00000005            00011 n       equ 5
+  00000F97            00012 TRISF   equ 0xF97
+  00000F99            00013 TRISH   equ 0xF99
+                      00014         
+000000 0E00           00015         MOVLW 0
+000002 6E97           00016         MOVWF TRISF ; set ALL PORTF pins as O/P's
+                      00017 
+000004                00018 L1      
+000004 0EFE           00019         MOVLW B'11111110' ; send PIN RH0 of PORT H low MOVWF LATH ; via LATH to drive transistor Q1
+000006 6E90           00020         MOVWF LATH
+000008 0E26           00021         MOVLW B'00100110' ; send PINS RF0, RF3, RF4, RF6, RF7 low MOVWF LATF ; via LATF to display numbe
+                            r 5 on U1
+00000A 6E8E           00022         MOVWF LATF
+00000C 0EFE           00023         MOVLW B'11111110' ; set TRISH such that pin RH0 MOVWF TRISH ; of PORTH is an output
+00000E 6E99           00024         MOVWF TRISH 
+000010 EC?? F???      00025         CALL L2
+                      00026         
+000014 0EFD           00027         MOVLW B'11111101' ; send PIN RH1 of PORT H low
+000016 6E90           00028         MOVWF LATH
+                      00029         
+                      00030         
+000018 0E4C           00031         MOVLW B'01001100' ; send PIN RH1 of PORT H low
+00001A 6E8E           00032         MOVWF LATF
+                      00033         
+00001C 0EFD           00034         MOVLW B'11111101'
+00001E 6E99           00035         MOVWF TRISH
+                      00036         
+000020 EC?? F???      00037         CALL    L2
+                      00038 
+                      00039 
+                      00040         
+000024 D???           00041         BRA L1 ; loop forever
+000026                00042 L2
+000026 0E05           00043         MOVLW n
+                      00044 ; main program loop
+                      00045 
+                      00046 
+000028 6E10           00047         MOVWF   lcnt3
+00002A                00048 L3
+00002A 0E64           00049         MOVLW   100
+00002C 6E0F           00050         MOVWF   lcnt2
+                      00051         
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-13-2018  19:11:56         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00052         
+00002E                00053 L4      
+00002E 0E1B           00054         MOVLW   27
+000030 6E0F           00055         MOVWF   lcnt2
+                      00056         
+000032                00057 L5
+000032 0000           00058         NOP 
+000034 0000           00059         NOP 
+000036 0000           00060         NOP 
+000038 0000           00061         NOP
+00003A 0000           00062         NOP 
+00003C 0000           00063         NOP
+00003E 060E           00064         DECF    lcnt1
+000040 E1??           00065         BNZ     L5
+000042 0000           00066         NOP
+000044 0000           00067         NOP
+000046 060F           00068         DECF    lcnt2
+000048 E1??           00069         BNZ     L4
+00004A 2E10           00070         DECFSZ  lcnt3
+00004C EF?? F???      00071         GOTO    L3
+000050 0012           00072         RETURN 
+                      00073         End
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-13-2018  19:11:56         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+L1                                00000004
+L2                                00000026
+L3                                0000002A
+L4                                0000002E
+L5                                00000032
+LATF                              00000F8E
+LATH                              00000F90
+TRISF                             00000F97
+TRISH                             00000F99
+__18F8722                         00000001
+lcnt1                             0000000E
+lcnt2                             0000000F
+lcnt3                             00000010
+n                                 00000005
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

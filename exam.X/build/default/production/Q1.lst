@@ -1,0 +1,116 @@
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-13-2018  19:24:43         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001         processor       18F8722
+                      00002         config  OSC=HS, WDT=OFF, LVP=OFF
+                      00003             radix       decimal
+                      00004         org             0x00
+                      00005 
+                      00006 
+  00000F89            00007 LATA    equ 0xF89;
+  00000F92            00008 TRISA   equ 0xF92
+  00000F8E            00009 LATF    equ 0xF8E
+  00000F97            00010 TRISF   equ 0xF97
+  00000F82            00011 PORTC   equ 0xF82
+  00000F94            00012 TRISC   equ 0xF94
+  00000F87            00013 PORTH   equ 0xF87
+  00000F99            00014 TRISH   equ 0xF99
+  00000FC1            00015 ADCON1  equ 0xFC1
+                      00016 
+                      00017 
+                      00018 
+000000 0E0F           00019         MOVLW   0x0F
+000002 6EC1           00020         MOVWF   ADCON1
+                      00021 
+000004 0E10           00022         MOVLW   B'00010000'
+000006 6E89           00023         MOVWF   LATA
+000008 0EEF           00024         MOVLW   B'11101111'
+00000A 6E92           00025         MOVWF   TRISA
+                      00026 
+00000C 0E3C           00027         MOVLW   B'00111100'
+00000E 6E94           00028         MOVWF   TRISC
+                      00029 
+000010 0EFF           00030         MOVLW   B'11111111'
+000012 6E99           00031         MOVWF   TRISH
+                      00032 
+000014 0E00           00033         MOVLW   0
+000016 6E97           00034         MOVWF   TRISF
+                      00035 
+000018 5087           00036 L1      MOVF    PORTH, W
+00001A 6E09           00037         MOVWF   9
+00001C 5082           00038         MOVF    PORTC,W
+00001E 6E0A           00039         MOVWF   10
+000020 400A           00040         RRNCF   10,     W
+000022 6E0B           00041         MOVWF   11
+000024 400B           00042         RRNCF   11,W
+                      00043 
+000026 0B0F           00044         ANDLW   15
+000028 6E0B           00045         MOVWF   11
+                      00046 
+00002A 5009           00047         MOVF    9,W
+00002C 0BF0           00048         ANDLW   B'11110000'
+00002E 1A0B           00049         XORWF   11,1
+000030 AE0B           00050         BTFSS   11,7
+000032 D???           00051         BRA         L2
+000034 D???           00052         BRA         L3
+                      00053 
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-13-2018  19:24:43         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000036 0E07           00054 L2      MOVLW   7
+000038 5E0B           00055         SUBWF   11
+00003A E0??           00056         BZ          L4
+00003C E6??           00057         BN          L4
+00003E 0E04           00058         MOVLW   B'00000100'
+000040 6E8E           00059         MOVWF   LATF
+000042 6E??           00060         MOVWF   L1
+                      00061 
+000044 D???           00062         BRA         L1
+                      00063 
+000046 0E00           00064 L4      MOVLW   B'00000000'
+000048 6E8E           00065         MOVWF   LATF
+00004A D???           00066         BRA L1
+                      00067 
+00004C 0EFF           00068 L3      MOVLW   255
+00004E 5E0B           00069         SUBWF   11
+000050 E0??           00070         BZ          L4
+000052 0E02           00071         MOVLW   B'00000010'
+000054 6E8E           00072         MOVWF   LATF
+000056 D???           00073         BRA         L1
+                      00074 
+                      00075 
+                      00076 
+Warning[205]: Found directive in column 1. (end)
+                      00077 end
+MPASM 5.77  /USERS/AARAMBH/DOCUMENTS/HDD REC   5-13-2018  19:24:43         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADCON1                            00000FC1
+L1                                00000018
+L2                                00000036
+L3                                0000004C
+L4                                00000046
+LATA                              00000F89
+LATF                              00000F8E
+PORTC                             00000F82
+PORTH                             00000F87
+TRISA                             00000F92
+TRISC                             00000F94
+TRISF                             00000F97
+TRISH                             00000F99
+__18F8722                         00000001
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
